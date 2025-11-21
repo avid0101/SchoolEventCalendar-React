@@ -4,7 +4,8 @@ export const fetchJoinedEventsWrapper = (username, setJoinedEvents, setLoading, 
   setLoading(true);
   getJoinedEvents(username)
     .then(res => {
-      setJoinedEvents(Array.isArray(res) ? res : []);
+      const data = Array.isArray(res) ? res : Array.isArray(res?.data) ? res.data : [];
+      setJoinedEvents(data);
     })
     .catch(() => {
       setMessage('Error: Failed to fetch joined events');

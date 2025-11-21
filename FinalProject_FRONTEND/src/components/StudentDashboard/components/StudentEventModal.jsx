@@ -17,7 +17,7 @@ const StudentEventModal = ({ event, onJoin, onClose }) => {
         <p><strong>Description:</strong> {description}</p>
         <p><strong>Status:</strong> {status}</p>
         <div>
-          <button className="joinButton" onClick={() => onJoin(event.id)}>Join</button>
+          <button className="joinButton" onClick={() => onJoin(event)}>Join</button>
           <button className="leaveButton" onClick={onClose}>Close</button>
         </div>
       </div>

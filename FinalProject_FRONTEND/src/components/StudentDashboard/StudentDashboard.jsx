@@ -23,18 +23,16 @@ import {
   handleLogout,
 } from "./functions";
 
-function StudentDashboard() {
+export default function StudentDashboard() {
   const { user, username } = useStudentUser();
   const studentState = useStudentState();
 
   useStudentEffects(user, studentState);
 
-  if (user.typeUser !== 'S') {
-    window.location.href = '/schooleventcalendar/login';
+  if (!user || user.typeUser !== "S") {
+    window.location.href = "/schooleventcalendar/login";
     return null;
   }
-
-  console.log(`Access granted: Logged in as '${user.username}' (type '${user.typeUser}')`);
 
   const {
     events,
@@ -50,11 +48,17 @@ function StudentDashboard() {
     setMessage,
   } = studentState;
 
+  // Hide already-joined events from browse page
+  const filteredEvents = events.filter(
+    (evt) => !joinedEvents.some((j) => j.eventId === evt.eventId)
+  );
+
+  // Map events for FullCalendar
   const calendarEvents = events.map((evt) => ({
     id: evt.eventId,
     title: evt.eventName,
-    start: `${evt.eventSchedule}T${evt.startTime}`,
-    end: `${evt.eventSchedule}T${evt.endTime}`,
+    start: evt.eventSchedule && evt.startTime ? `${evt.eventSchedule}T${evt.startTime}` : '',
+    end: evt.eventSchedule && evt.endTime ? `${evt.eventSchedule}T${evt.endTime}` : '',
     extendedProps: {
       description: evt.eventDescription,
       location: evt.eventLocation,
@@ -74,7 +78,7 @@ function StudentDashboard() {
               path="browseevents"
               element={
                 <BrowseEventsPage
-                  events={events}
+                  events={filteredEvents}
                   message={message}
                   loading={loading}
                   onJoin={(eventId) =>
@@ -149,6 +153,7 @@ function StudentDashboard() {
                 />
               }
             />
+
             <Route path="*" element={<Navigate to="calendarview" replace />} />
           </Routes>
         </div>
@@ -156,5 +161,3 @@ function StudentDashboard() {
     </div>
   );
 }
-
-export default StudentDashboard;

@@ -4,9 +4,10 @@ export const fetchEventsWrapper = (setEvents, setLoading, setMessage) => {
   setLoading(true);
   getEvents()
     .then(res => {
+      // support both axios-style (res.data) and direct arrays (res)
       const eventsData = Array.isArray(res)
         ? res
-        : Array.isArray(res.data)
+        : Array.isArray(res?.data)
         ? res.data
         : [];
       setEvents(eventsData);
