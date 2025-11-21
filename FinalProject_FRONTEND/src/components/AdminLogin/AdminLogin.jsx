@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../Login/components/LoginForm';
+import { login } from '../../services/api';
 import './AdminLogin.css';
 
 function AdminLogin() {
@@ -10,26 +11,35 @@ function AdminLogin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    console.log('Login attempt:', { username, password }); // Debug log
+    try {
+      // Call the backend API to authenticate
+      const response = await login(username, password);
+      const userData = response.data;
 
-    // Simple admin check
-    if (username.trim() === 'admin' && password.trim() === 'admin') {
-      console.log('Login successful!'); // Debug log
-      
-      // ✅ Store token on successful login
-      localStorage.setItem('admin_token', 'valid');
-      
-      // Small delay to ensure localStorage is set
-      setTimeout(() => {
-        navigate('/schooleventcalendar/admindashboard');
-      }, 100);
-    } else {
-      console.log('Login failed - invalid credentials'); // Debug log
+      console.log('Login response:', userData);
+
+      // Check if user is an Admin (typeUser should be 'A' for admin)
+      // OR if you're using EventManager as admin, check for 'E'
+      if (userData.typeUser === 'E' || userData.typeUser === 'A') {
+        // Store admin token and user data
+        localStorage.setItem('admin_token', 'valid');
+        localStorage.setItem('admin_user', JSON.stringify(userData));
+        
+        // Navigate to admin dashboard
+        setTimeout(() => {
+          navigate('/schooleventcalendar/admindashboard');
+        }, 100);
+      } else {
+        setError('Access denied. Admin privileges required.');
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error('Login error:', err);
       setError('Invalid admin credentials. Please try again.');
       setLoading(false);
     }
