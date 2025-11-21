@@ -165,3 +165,14 @@ export const leaveEvent = async (eventId, username) => {
     throw err;
   }
 };
+
+// ✅ NEW: Get participants for a specific event
+export const getEventParticipants = async (eventId) => {
+  try {
+    const res = await apiClient.get(`/events/${eventId}/participants`);
+    return res.data;
+  } catch (err) {
+    console.error('❌ getEventParticipants failed:', err);
+    throw err;
+  }
+};

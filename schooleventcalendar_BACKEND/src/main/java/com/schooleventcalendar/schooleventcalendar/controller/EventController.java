@@ -1,6 +1,7 @@
 package com.schooleventcalendar.schooleventcalendar.controller;
 
 import com.schooleventcalendar.schooleventcalendar.entity.EventEntity;
+import com.schooleventcalendar.schooleventcalendar.entity.UserEntity;
 import com.schooleventcalendar.schooleventcalendar.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
@@ -23,7 +25,7 @@ public class EventController {
     public ResponseEntity<EventEntity> postEvent(@RequestBody EventEntity event) {
         try {
             EventEntity createdEvent = eserv.postEvent(event);
-            return new ResponseEntity<>(createdEvent, HttpStatus.CREATED); // Return 201 Created
+            return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -35,11 +37,11 @@ public class EventController {
         try {
             List<EventEntity> events = eserv.getAllEvents();
             if (events.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Return 204 if no events found
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            return new ResponseEntity<>(events, HttpStatus.OK); // Return 200 OK with events
+            return new ResponseEntity<>(events, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR); // Return 500 for errors
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -49,9 +51,9 @@ public class EventController {
         try {
             EventEntity updatedEvent = eserv.putEvent(id, newEventDetails);
             if (updatedEvent == null) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Return 404 if event not found
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(updatedEvent, HttpStatus.OK); // Return 200 OK with updated event
+            return new ResponseEntity<>(updatedEvent, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -63,14 +65,15 @@ public class EventController {
         try {
             String result = eserv.deleteEvent(id);
             if ("Not Found".equals(result)) {
-                return new ResponseEntity<>("Event not found", HttpStatus.NOT_FOUND); // Return 404 if event not found
+                return new ResponseEntity<>("Event not found", HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>("Event deleted successfully", HttpStatus.OK); // Return 200 OK
+            return new ResponseEntity<>("Event deleted successfully", HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("An error occurred", HttpStatus.INTERNAL_SERVER_ERROR); // Return 500 if error
+            return new ResponseEntity<>("An error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     
+    // Register for event
     @PostMapping("/register/{eventId}")
     public ResponseEntity<String> registerForEvent(
         @PathVariable int eventId,
@@ -119,6 +122,17 @@ public class EventController {
             return eserv.leaveEvent(eventId, username);
         } catch (Exception e) {
             return new ResponseEntity<>("Error leaving event", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // ✅ NEW: Get participants for a specific event
+    @GetMapping("/events/{eventId}/participants")
+    public ResponseEntity<Set<UserEntity>> getEventParticipants(@PathVariable int eventId) {
+        try {
+            Set<UserEntity> participants = eserv.getEventParticipants(eventId);
+            return new ResponseEntity<>(participants, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
