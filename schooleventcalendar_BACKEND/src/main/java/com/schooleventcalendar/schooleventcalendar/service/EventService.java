@@ -1,7 +1,9 @@
 package com.schooleventcalendar.schooleventcalendar.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -125,6 +127,16 @@ public class EventService {
 		eventRepo.save(event);
 
 		return new ResponseEntity<>("Successfully left the event", HttpStatus.OK);
+	}
+
+	// ✅ NEW: Get participants for a specific event
+	public Set<UserEntity> getEventParticipants(int eventId) {
+		var eventOpt = eventRepo.findById(eventId);
+		if (eventOpt.isEmpty()) {
+			throw new NameNotFoundException("Event not found");
+		}
+		EventEntity event = eventOpt.get();
+		return event.getParticipants() != null ? event.getParticipants() : new HashSet<>();
 	}
 	
     @ExceptionHandler

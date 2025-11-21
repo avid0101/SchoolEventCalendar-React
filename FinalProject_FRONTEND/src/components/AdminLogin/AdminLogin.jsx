@@ -15,17 +15,24 @@ function AdminLogin() {
     setLoading(true);
     setError('');
 
-    // Simulate login delay
-    setTimeout(() => {
-      if (username === 'admin' && password === 'admin') {
-        // ✅ Store token on successful login
-        localStorage.setItem('admin_token', 'valid');
+    console.log('Login attempt:', { username, password }); // Debug log
+
+    // Simple admin check
+    if (username.trim() === 'admin' && password.trim() === 'admin') {
+      console.log('Login successful!'); // Debug log
+      
+      // ✅ Store token on successful login
+      localStorage.setItem('admin_token', 'valid');
+      
+      // Small delay to ensure localStorage is set
+      setTimeout(() => {
         navigate('/schooleventcalendar/admindashboard');
-      } else {
-        setError('Invalid admin credentials. Please try again.');
-      }
+      }, 100);
+    } else {
+      console.log('Login failed - invalid credentials'); // Debug log
+      setError('Invalid admin credentials. Please try again.');
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -40,12 +47,12 @@ function AdminLogin() {
           loading={loading}
           onSubmit={handleLogin}
           headerTitle="Admin Login"
-          headerSubtitle=""
+          headerSubtitle="Enter admin credentials to access dashboard"
           hideSignupLink={true}
         />
 
         <div className="landingpageback">
-          Go back to Landing page <a href="/">click here</a>
+          Go back to Landing page <a href="/schooleventcalendar/landing">click here</a>
         </div>
       </div>
     </div>
