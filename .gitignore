@@ -1,1 +1,18 @@
-node_modules
+node_modules/
+.vscode/
+
+# Frontend build output
+frontend/dist/
+
+# Backend build output
+backend/target/
+
+# Environment & logs
+.env
+*.env
+*.log
+
+# OS/Editor junk
+Thumbs.db
+.DS_Store
+*.swp
