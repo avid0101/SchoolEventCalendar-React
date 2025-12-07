@@ -7,7 +7,7 @@ School Event Calendar is a web-based platform designed to streamline the plannin
 - **Admin**: Manage users and events; full oversight and access to participants.
 - **Event Manager**: Create and edit events; view participants; manage schedules.
 - **Student**: Browse and join/leave events; view calendar and joined events; update profile.
-- 
+
 ## 🚀 Features
 
 - **Student Portal**: Browse events, join events, view calendar, manage profile
