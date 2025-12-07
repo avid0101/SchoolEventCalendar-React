@@ -1,6 +1,6 @@
 # School Event Calendar
 
-A full-stack web application for managing school events, built with React (frontend) and Spring Boot (backend).
+School Event Calendar is a web-based platform designed to streamline the planning, management, and participation in school events. The system provides a centralized calendar and management tools for all stakeholders, making event organization transparent and efficient.
 
 ## 🚀 Features
 
