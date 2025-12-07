@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import LandingPage from './components/LandingPage/LandingPage';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import StudentDashboard from './components/StudentDashboard/StudentDashboard';
-import AdminLogin from './components/AdminLogin/AdminLogin';
-import AdminDashboard from './components/AdminDashboard/AdminDashboard';
-import EventManager from './components/EventManager/EventManager';
-import About from './components/LandingPage/components/About';
-import Contact from './components/LandingPage/components/Contact';
-import ProtectedRoute from './components/AdminDashboard/components/ProtectedRoute';
+import LandingPage from './pages/public/LandingPage';
+import About from './pages/public/About';
+import Contact from './pages/public/Contact';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import ProtectedRoute from './pages/admin/ProtectedRoute';
+import EventManager from './pages/event-manager/EventManager';
+import StudentDashboard from './pages/student/StudentDashboard';
 
 function App() {
   return (
