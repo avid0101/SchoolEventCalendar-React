@@ -2,12 +2,6 @@
 
 School Event Calendar is a web-based platform designed to streamline the planning, management, and participation in school events. The system provides a centralized calendar and management tools for all stakeholders, making event organization transparent and efficient.
 
-User Roles:
-
-**Admin**: Has full control over the system. Admins can create and manage events, add or remove event managers and students, and oversee all activities. They ensure the smooth operation of the platform and have access to all data and reports.
-**Event Manager**: Responsible for creating, editing, and managing events. Event Managers can view who has joined their events, update event details, and communicate with participants. They help coordinate logistics and ensure events run smoothly.
-**Student**: Can browse the event calendar, join events, and view details of events they are interested in. Students can also see which events they have joined and receive updates or notifications about upcoming activities.
-This role-based approach ensures that each user has access to the tools and information they need, while keeping the system organized and secure. The platform aims to foster better communication, engagement, and collaboration within the school community.
 ## 🚀 Features
 
 - **Student Portal**: Browse events, join events, view calendar, manage profile
