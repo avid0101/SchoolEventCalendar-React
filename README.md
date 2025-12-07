@@ -2,6 +2,12 @@
 
 School Event Calendar is a web-based platform designed to streamline the planning, management, and participation in school events. The system provides a centralized calendar and management tools for all stakeholders, making event organization transparent and efficient.
 
+## 🧭 Roles
+
+- **Admin**: Manage users and events; full oversight and access to participants.
+- **Event Manager**: Create and edit events; view participants; manage schedules.
+- **Student**: Browse and join/leave events; view calendar and joined events; update profile.
+- 
 ## 🚀 Features
 
 - **Student Portal**: Browse events, join events, view calendar, manage profile
@@ -106,42 +112,6 @@ npm run frontend
 | `/admin/dashboard` | Admin dashboard |
 | `/event-manager/*` | Event manager portal |
 | `/student/*` | Student portal |
- 
-## 🧭 Roles
-
-- **Admin**: Manage users and events; full oversight and access to participants.
-- **Event Manager**: Create and edit events; view participants; manage schedules.
-- **Student**: Browse and join/leave events; view calendar and joined events; update profile.
-
-## ⚙️ Setup
-
-### Prerequisites
-- Node.js 18+
-- Java 17+
-- Maven
-- MySQL
-
-### Frontend
-```powershell
-cd "c:\Users\X280\Downloads\SchoolEventCalendar\frontend"
-cmd /c "npm install"
-cmd /c "npm run dev"
-```
-Vite will start at `http://localhost:5173` (or the next free port).
-
-### Backend
-```powershell
-cd "c:\Users\X280\Downloads\SchoolEventCalendar\backend"
-./mvnw.cmd spring-boot:run
-```
-Backend runs at `http://localhost:8080`.
-
-## Notes
-- If PowerShell blocks `npm` scripts, use `cmd /c` or run:
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-```
-- If port 5173 is busy, Vite auto-selects another port (e.g., 5174).
 
 ## 📝 API Endpoints
 
@@ -156,7 +126,3 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 - `POST /api/postevents` - Create event
 - `PUT /api/putevents/:id` - Update event
 - `DELETE /api/deleteevents/:id` - Delete event
-
-## 📄 License
-
-This project is for educational purposes.
