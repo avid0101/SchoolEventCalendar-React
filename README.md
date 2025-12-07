@@ -10,7 +10,7 @@ A full-stack web application for managing school events, built with React (front
 - **Calendar View**: Interactive calendar with FullCalendar integration
 - **User Authentication**: Secure login for students, event managers, and admins
 
-## 📁 Project Structure (Current)
+## 📁 Project Structure
 
 ```
 SchoolEventCalendar/
@@ -106,47 +106,42 @@ npm run frontend
 | `/admin/dashboard` | Admin dashboard |
 | `/event-manager/*` | Event manager portal |
 | `/student/*` | Student portal |
+ 
+## 🧭 Roles
 
-## 📁 Previous Frontend Structure (Before Cleanup)
+- **Admin**: Manage users and events; full oversight and access to participants.
+- **Event Manager**: Create and edit events; view participants; manage schedules.
+- **Student**: Browse and join/leave events; view calendar and joined events; update profile.
 
+## ⚙️ Setup
+
+### Prerequisites
+- Node.js 18+
+- Java 17+
+- Maven
+- MySQL
+
+### Frontend
+```powershell
+cd "c:\Users\X280\Downloads\SchoolEventCalendar\frontend"
+cmd /c "npm install"
+cmd /c "npm run dev"
 ```
-FinalProject_FRONTEND/
-	src/
-		components/
-			AdminDashboard/
-				components/
-				context/
-				pages/
-			AdminLogin/
-			EventManager/
-				components/
-				functions/
-				hooks/
-				pages/
-				utils/
-			LandingPage/
-				components/
-			Login/
-				components/
-				hooks/
-			Register/
-				components/
-				hooks/
-			StudentDashboard/
-				components/
-				functions/
-				hooks/
-				pages/
-				utils/
-		services/
-			api.js
+Vite will start at `http://localhost:5173` (or the next free port).
+
+### Backend
+```powershell
+cd "c:\Users\X280\Downloads\SchoolEventCalendar\backend"
+./mvnw.cmd spring-boot:run
 ```
+Backend runs at `http://localhost:8080`.
 
-## 🧭 Role Summary
-
-- **Admin**: Manage users and events; full oversight, access to participants.
-- **Event Manager**: Create/edit events; view participants; manage schedules.
-- **Student**: Browse, join/leave events; view calendar and joined events; update profile.
+## Notes
+- If PowerShell blocks `npm` scripts, use `cmd /c` or run:
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+- If port 5173 is busy, Vite auto-selects another port (e.g., 5174).
 
 ## 📝 API Endpoints
 
