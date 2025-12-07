@@ -3,6 +3,7 @@ node_modules/
 
 # Frontend build output
 frontend/dist/
+frontend/.vite/
 
 # Backend build output
 backend/target/
