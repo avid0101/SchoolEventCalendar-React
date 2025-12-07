@@ -1,1 +1,23 @@
-node_modules
+node_modules/
+
+# VS Code: ignore workspace settings, but allow shared files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
+
+# Frontend build output
+frontend/dist/
+frontend/.vite/
+
+# Backend build output
+backend/target/
+
+# Environment & logs
+.env
+*.env
+*.log
+
+# OS/Editor junk
+Thumbs.db
+.DS_Store
+*.swp
