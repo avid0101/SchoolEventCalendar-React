@@ -1,5 +1,9 @@
 node_modules/
-.vscode/
+
+# VS Code: ignore workspace settings, but allow shared files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
 
 # Frontend build output
 frontend/dist/
