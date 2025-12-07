@@ -10,21 +10,25 @@ A full-stack web application for managing school events, built with React (front
 - **Calendar View**: Interactive calendar with FullCalendar integration
 - **User Authentication**: Secure login for students, event managers, and admins
 
-## 📁 Project Structure
+## 📁 Project Structure (Current)
 
 ```
 SchoolEventCalendar/
 ├── frontend/          # React + Vite frontend
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── AdminDashboard/
-│   │   │   ├── AdminLogin/
-│   │   │   ├── EventManager/
-│   │   │   ├── LandingPage/
-│   │   │   ├── Login/
-│   │   │   ├── Register/
-│   │   │   └── StudentDashboard/
-│   │   └── services/
+│   │   │   ├── common/          # Shared UI components
+│   │   │   └── layout/          # Header, nav, sidebar
+│   │   ├── pages/
+│   │   │   ├── public/          # Landing, About, Contact
+│   │   │   ├── auth/            # Login, Register
+│   │   │   ├── admin/           # Admin dashboard & pages
+│   │   │   ├── event-manager/   # Event manager portal
+│   │   │   └── student/         # Student portal
+│   │   ├── hooks/               # Shared custom hooks
+│   │   ├── context/             # React contexts
+│   │   ├── services/            # API calls
+│   │   └── utils/               # Helpers
 │   └── public/
 ├── backend/           # Spring Boot backend
 │   └── src/
@@ -102,6 +106,47 @@ npm run frontend
 | `/admin/dashboard` | Admin dashboard |
 | `/event-manager/*` | Event manager portal |
 | `/student/*` | Student portal |
+
+## 📁 Previous Frontend Structure (Before Cleanup)
+
+```
+FinalProject_FRONTEND/
+	src/
+		components/
+			AdminDashboard/
+				components/
+				context/
+				pages/
+			AdminLogin/
+			EventManager/
+				components/
+				functions/
+				hooks/
+				pages/
+				utils/
+			LandingPage/
+				components/
+			Login/
+				components/
+				hooks/
+			Register/
+				components/
+				hooks/
+			StudentDashboard/
+				components/
+				functions/
+				hooks/
+				pages/
+				utils/
+		services/
+			api.js
+```
+
+## 🧭 Role Summary
+
+- **Admin**: Manage users and events; full oversight, access to participants.
+- **Event Manager**: Create/edit events; view participants; manage schedules.
+- **Student**: Browse, join/leave events; view calendar and joined events; update profile.
 
 ## 📝 API Endpoints
 
