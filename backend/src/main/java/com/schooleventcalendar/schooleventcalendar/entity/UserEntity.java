@@ -16,7 +16,8 @@ public class UserEntity {
     
     public enum UserType {
         S, // Student
-        E  // EventManager
+        E, // EventManager
+        A  // Admin
     }
     
     @Id
