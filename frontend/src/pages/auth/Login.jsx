@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 import { useLoginHandler } from '../../hooks/useLoginHandler';
 import { useNavigation } from '../../hooks/useNavigation';
 
-export default function Login() {
+export default function Login({ isModal = false, onClose }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { handleLogin, error, loading } = useLoginHandler();
@@ -17,16 +17,14 @@ export default function Login() {
     await handleLogin(username, password);
   };
 
-  return (
-    <>
-        <div className="landing-page">
-      <Header />     
-    </div>
-      <div className="loginWrapper">
+  if (!isModal) {
+    return (
+      <div className="landing-page auth-full">
+        <Header />
         <div className="loginContainer">
-          <BackButton onClick={navigateToHome} />
-          
-          <LoginForm        // dont need to add these props loading or hideSignupLink={false} 
+          {!isModal && <BackButton onClick={onClose ? onClose : navigateToHome} />}
+
+          <LoginForm
             username={username}
             setUsername={setUsername}
             password={password}
@@ -37,6 +35,22 @@ export default function Login() {
           />
         </div>
       </div>
-    </>
+    );
+  }
+
+  return (
+    <div className="loginContainer">
+      {!isModal && <BackButton onClick={onClose ? onClose : navigateToHome} />}
+
+      <LoginForm
+        username={username}
+        setUsername={setUsername}
+        password={password}
+        setPassword={setPassword}
+        error={error}
+        loading={loading}
+        onSubmit={handleSubmit}
+      />
+    </div>
   );
 }

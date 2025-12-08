@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import FormInput from '../../components/common/FormInput';
 import LoadingButton from '../../components/common/LoadingButton';
 import MessageDisplay from '../../components/common/MessageDisplay';
@@ -24,6 +24,7 @@ export default function RegisterForm({
   showLoginLink = true,
   onCancel
 }) {
+  const location = useLocation();
   return (
     <form onSubmit={onSubmit} className="registerForm">
      
@@ -110,7 +111,7 @@ export default function RegisterForm({
 
       {showLoginLink && (
         <div className="loginLink">
-          Already have an account? <Link to="/login">Login here</Link>
+          Already have an account? <Link to="/login" state={{ background: location }}>Login here</Link>
         </div>
       )}
     </form>

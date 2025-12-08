@@ -1,167 +1,221 @@
-.loginWrapper {
+:root{
+  --bg-start:#f6f7ff;
+  --bg-end:#eef7ff;
+  --accent:#6c63ff;
+  --accent-600:#5a50d4;
+  --muted:#6b7280;
+  --danger:#d8000c;
+}
+
+/* When rendering the auth page as a full page (not modal),
+   the landing-page will get the `auth-full` modifier to center
+   the `.loginContainer` without needing a separate wrapper. */
+.landing-page.auth-full {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: flex-end; /* place container on the right side */
   min-height: 100vh;
-  background-color: #f4f4f4;
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  /* reduce right padding and increase left padding so the card moves visually to the right */
+  padding: 40px 12px 40px 220px;
+}
+
+/* When using full-page auth, keep the site header pinned to the top so
+   the login container sits visually centered on the page. */
+.landing-page.auth-full .header {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Strong vertical centering for the auth card */
+.landing-page.auth-full { position: relative; }
+.landing-page.auth-full .loginContainer {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px; /* keep small gap from screen edge */
+  margin-left: 0;
+  max-width: 460px;
 }
 
 .loginContainer {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Card styling to match provided design */
+  background: #f5f5f6; /* soft interior gray */
+  border-radius: 12px;
   width: 100%;
-  max-width: 400px;
-  padding: 40px;
-  margin-top: -200px;
+  max-width: 360px; /* compact, tall card */
+  padding: 28px 26px;
   position: relative;
+  border: 3px solid rgba(108,99,255,0.18); /* subtle purple border */
+  box-shadow: 0 8px 24px rgba(16,24,40,0.06);
 }
 
 /* Back Link Styles */
 .backLink {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
+  top: 18px;
+  left: 18px;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: #6c63ff;
-  font-size: 14px;
-  font-weight: 500;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s ease;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
 }
 
 .backLink:hover {
-  color: #5a50d4;
-  text-decoration: underline;
+  color: #fff;
+  background-color: var(--accent-600);
+  transform: translateX(-2px);
 }
 
 .backLink:focus {
-  outline: 2px solid #6c63ff;
+  outline: 3px solid rgba(108,99,255,0.18);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .backLink svg {
-  transition: transform 0.2s ease;
+  transition: transform 0.18s ease;
 }
 
 .backLink:hover svg {
-  transform: translateX(-2px);
+  transform: translateX(-3px);
 }
 
 .loginHeader {
   text-align: center;
-  margin-bottom: 30px;
-  margin-top: 40px; /* Add top margin to accommodate back button */
+  margin-bottom: 22px;
+  margin-top: 18px; /* accommodate back button */
 }
 
 .loginHeader h2 {
-  margin: 0;
-  color: #333;
-  font-size: 24px;
+  margin: 0 0 8px 0;
+  color: #0f172a;
+  font-size: 26px;
+  text-align: center;
+  font-weight: 700;
 }
 
 .loginHeader p {
-  color: #666;
-  margin-top: 10px;
+  color: #6b7280;
+  margin: 0 0 18px 0;
+  font-size: 13px;
+  text-align: center;
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
-.formGroup {
-  margin-bottom: 20px;
-}
+.formGroup { margin-bottom: 16px; }
 
 .formGroup label {
   display: block;
-  margin-bottom: 8px;
-  color: #333;
+  margin-bottom: 6px;
+  color: #9ca3af;
   font-weight: 500;
+  font-size: 13px;
 }
 
+/* Underline style inputs (design from attachment) */
 .formInput {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
+  padding: 8px 4px;
+  border: none;
+  border-bottom: 1px solid #c9c9c9;
+  border-radius: 0;
+  font-size: 15px;
+  background: transparent;
 }
+
+.formInput:focus { box-shadow: none; border-bottom-color: var(--accent); outline: none; }
 
 .formInput:focus {
   outline: none;
-  border-color: #6c63ff;
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(108,99,255,0.08);
+  transform: translateY(-1px);
 }
 
-.loginButton {
+.loginContainer .loginButton {
   width: 100%;
-  padding: 12px;
-  background-color: #6c63ff;
+  padding: 12px 18px;
+  background: linear-gradient(90deg,#36C2FF 0%, #8C56FF 100%); /* image-like blue→purple */
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 8px 18px rgba(60,80,160,0.12);
 }
 
-.loginButton:hover {
-  background-color: #5a50d4;
-}
-
-.loginButton:disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
-}
+.loginContainer .loginButton:hover { transform: translateY(-1px); filter: brightness(0.98); }
 
 .signupLink {
   text-align: center;
-  margin-top: 20px;
-  color: #666;
-  font-size: 14px;
+  margin-top: 18px;
+  color: #6b7280;
+  font-size: 13px;
 }
 
 .signupLink a {
-  color: #6c63ff;
+  color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .errorMessage {
-  background-color: #ffe5e5;
-  color: #d8000c;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  background-color: #fff2f2;
+  color: var(--danger);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
   font-size: 14px;
   text-align: center;
+  border: 1px solid rgba(216,40,40,0.08);
 }
 
 .boldLabel {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .loginContainer {
-    width: 90%;
+    width: 96%;
     padding: 20px;
-    margin-top: 0;
   }
-  
+
   .backLink {
-    top: 15px;
-    left: 15px;
+    top: 12px;
+    left: 12px;
     font-size: 13px;
+    padding: 6px 8px;
   }
-  
+
   .loginHeader {
-    margin-top: 35px;
+    margin-top: 28px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backLink, .loginButton, .formInput { transition: none !important; }
+}
+
+/* On small screens, center the auth container again */
+@media (max-width: 900px) {
+  .landing-page.auth-full { justify-content: center; padding: 20px; }
+  .landing-page.auth-full .loginContainer { transform: translateY(-50%); margin-left: auto; margin-right: auto; top: 50%; }
 }

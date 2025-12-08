@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import FormInput from '../../components/common/FormInput';
 import ErrorMessage from '../../components/common/ErrorMessage';
 import LoadingButton from '../../components/common/LoadingButton';
@@ -16,6 +16,7 @@ export default function LoginForm({
   headerSubtitle = 'Enter your credentials to access your student or event manager dashboard',
   hideSignupLink = false
 }) {
+  const location = useLocation();
   return (
     <form onSubmit={onSubmit} className="loginForm">
       <div className="loginHeader">
@@ -56,7 +57,7 @@ export default function LoginForm({
 
       {!hideSignupLink && (
         <div className="signupLink">
-          Don't have an account? <Link to="/register">Sign Up</Link>
+          Don't have an account? <Link to="/register" state={{ background: location }}>Sign Up</Link>
         </div>
       )}
     </form>

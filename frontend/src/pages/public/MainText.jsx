@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './MainText.css';
 
 const MainText = () => {
+  const location = useLocation();
   return (
     <main className="content">
       <div className="container" style={{marginTop: '-5%'}}>
@@ -12,7 +13,7 @@ const MainText = () => {
             Create, manage, and share events seamlessly with our easy-to-use event maker.
             Stay organized with built-in calendars, reminders, and RSVPs—all in one place!
           </p>
-          <Link to="/login" className="purple-button">
+          <Link to="/login" state={{ background: location }} className="purple-button">
             Try Now!
           </Link>
         </section>

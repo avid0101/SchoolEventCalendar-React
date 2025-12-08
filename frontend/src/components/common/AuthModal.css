@@ -1,0 +1,62 @@
+.auth-modal-backdrop{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(12,18,31,0.45);
+  backdrop-filter: blur(4px);
+  z-index:1200;
+  animation: fadeIn 300ms ease forwards;
+}
+
+.auth-modal-content{
+  width:100%;
+  max-width:520px;
+  margin:24px;
+  transform-origin:center;
+  animation: popIn 360ms cubic-bezier(.2,.9,.2,1) forwards;
+  position: relative; /* allow close button to be placed relative to modal content */
+}
+
+.auth-modal-close{
+  position:absolute;
+  left:18px; /* move close to upper-left inside the modal */
+  top:14px;
+  right:auto;
+  background:transparent;
+  border:none;
+  color:#374151;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  padding:6px 8px;
+  border-radius:6px;
+  transition: background-color .12s ease, color .12s ease, transform .12s ease;
+}
+
+.auth-modal-close:hover{background:rgba(0,0,0,0.04);transform:translateY(-1px)}
+
+@keyframes popIn{
+  from{opacity:0;transform:translateY(-8px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .auth-modal-backdrop, .auth-modal-content{animation:none}
+}
+
+/* Ensure auth containers inside the modal use consistent sizing */
+.auth-modal-content .loginContainer,
+.auth-modal-content .registerContainer {
+  max-width: 460px; /* match auth card width */
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  /* allow container's own padding so the visual card matches full-page */
+}
