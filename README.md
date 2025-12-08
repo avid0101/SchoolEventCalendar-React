@@ -77,26 +77,26 @@ git clone https://github.com/avid0101/SchoolEventCalendar-React.git
 cd SchoolEventCalendar
 ```
 
-### 2. Install dependencies
+### 2. Configure the backend for access to database
+Create a file application-secrets.properties in backend/src/main/resources folder
+Paste this inside the file and replace [your password] with your database password
 ```bash
-npm run install:all
+# Database Password
+DB_PASSWORD=[your password]
 ```
 
-### 3. Configure the database
-Edit `backend/src/main/resources/application.properties` with your MySQL credentials.
 
-### 4. Run both frontend and backend
+### 3. Run backend
 ```bash
+cd backend
+mvn spring-boot:run
+```
+
+### 4. Run frontend
+```bash
+cd frontend
+npm install
 npm run dev
-```
-
-Or run them separately:
-```bash
-# Terminal 1 - Backend
-npm run backend
-
-# Terminal 2 - Frontend
-npm run frontend
 ```
 
 ## 🌐 Routes
