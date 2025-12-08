@@ -7,7 +7,7 @@ import { useRegisterHandler } from '../../hooks/useRegisterHandler';
 import { useFormState } from '../../hooks/useFormState';
 import { useNavigation } from '../../hooks/useNavigation';
 
-export default function Register() {
+export default function Register({ isModal = false, onClose }) {
   const { formData, updateField, resetForm } = useFormState();
   const { handleRegister, message, loading } = useRegisterHandler();
   const { navigateToHome } = useNavigation();
@@ -24,11 +24,33 @@ export default function Register() {
 
   return (
     <>
-      <Header />
-      <div className="registerWrapper">
+      {!isModal ? (
+        <div className="landing-page auth-full">
+          <Header />
+          <div className="registerContainer">
+            {!isModal && <BackButton onClick={onClose ? onClose : navigateToHome} />}
+
+            <RegisterForm
+            username={formData.username}
+            setUsername={(value) => updateField('username', value)}
+            firstName={formData.firstName}
+            setFirstName={(value) => updateField('firstName', value)}
+            middleName={formData.middleName}
+            setMiddleName={(value) => updateField('middleName', value)}
+            lastName={formData.lastName}
+            setLastName={(value) => updateField('lastName', value)}
+            password={formData.password}
+            setPassword={(value) => updateField('password', value)}
+            message={message}
+            loading={loading}
+            onSubmit={handleSubmit}
+            />
+          </div>
+        </div>
+      ) : (
         <div className="registerContainer">
-          <BackButton onClick={navigateToHome} />
-          
+          {!isModal && <BackButton onClick={onClose ? onClose : navigateToHome} />}
+
           <RegisterForm
             username={formData.username}
             setUsername={(value) => updateField('username', value)}
@@ -45,7 +67,7 @@ export default function Register() {
             onSubmit={handleSubmit}
           />
         </div>
-      </div>
+      )}
     </>
   );
 }
