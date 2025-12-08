@@ -25,7 +25,7 @@ function AdminLogin() {
 
       // Check if user is an Admin (typeUser should be 'A' for admin)
       // OR if you're using EventManager as admin, check for 'E'
-      if (userData.typeUser === 'E' || userData.typeUser === 'A') {
+      if (userData.typeUser === 'A') {
         // Store admin token and user data
         localStorage.setItem('admin_token', 'valid');
         localStorage.setItem('admin_user', JSON.stringify(userData));
