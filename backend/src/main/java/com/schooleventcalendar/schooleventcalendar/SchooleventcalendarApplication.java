@@ -8,6 +8,8 @@ public class SchooleventcalendarApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SchooleventcalendarApplication.class, args);
-		System.out.println("School Event Calendar");
+		System.out.println("---------------------------------------------------------");
+		System.out.println("School Event Calendar Application Started Successfully!");
+		System.out.println("---------------------------------------------------------");
 	}
 }
