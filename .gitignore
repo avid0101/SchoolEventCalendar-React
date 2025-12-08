@@ -21,3 +21,7 @@ backend/target/
 Thumbs.db
 .DS_Store
 *.swp
+
+# Secrets - DO NOT COMMIT
+**/application-secrets.properties
+src/main/resources/application-secrets.properties
