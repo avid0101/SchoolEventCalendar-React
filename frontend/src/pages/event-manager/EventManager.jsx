@@ -8,17 +8,6 @@ import { fetchEventsWrapper } from '../../utils/fetchEventsWrapper';
 import EventModal from './components/EventModal';
 import HeaderNav from '../../components/layout/HeaderNav';
 
-import {
-  handleSubmit,
-  handleEdit,
-  handleDelete,
-  clearForm,
-  handleInputChange,
-  handleEditChange,
-  handleProfileUpdate,
-  handleLogout
-} from './functions';
-
 import CreateEventPage from './CreateEventPage';
 import ManageEventPage from './ManageEventPage';
 import CalendarPage from './CalendarPage';
@@ -58,20 +47,6 @@ function EventManager() {
     }
   }, []);
 
-  const clearAll = () => clearForm(setFormData, setEditMode, setEditEventId);
-
-  const submitHandler = (e) =>
-    handleSubmit({
-      e,
-      formData,
-      editMode,
-      editEventId,
-      setMessage,
-      fetchEventsWrapper: () => fetchEventsWrapper(setEvents, setLoading, setMessage),
-      clearForm: clearAll,
-      navigate
-    });
-
   return (
     <div className="event-manager-container">
       <HeaderNav username={user.username} />
@@ -82,22 +57,40 @@ function EventManager() {
             onClose={() => setSelectedEvent(null)}
             onEdit={() => {
               setSelectedEvent(null);
-              handleEdit(selectedEvent, setFormData, setEditMode, setEditEventId, navigate);
+              setFormData({
+                title: selectedEvent.eventName,
+                description: selectedEvent.eventDescription,
+                eventDate: selectedEvent.eventSchedule,
+                startTime: selectedEvent.startTime.slice(0, 5),
+                endTime: selectedEvent.endTime.slice(0, 5),
+                location: selectedEvent.eventLocation
+              });
+              setEditMode(true);
+              setEditEventId(selectedEvent.eventId);
+              navigate('/event-manager/createvent');
             }}
           />
 
           <Routes>
             <Route index element={<Navigate to="calendarview" replace />} />
+            
             <Route
               path="createvent"
               element={
                 <CreateEventPage
-                  editMode={editMode}
+                  user={user}
+                  events={events}
+                  setEvents={setEvents}
                   message={message}
+                  setMessage={setMessage}
+                  loading={loading}
+                  setLoading={setLoading}
                   formData={formData}
-                  handleInputChange={(e) => handleInputChange(e, setFormData)}
-                  submitHandler={submitHandler}
-                  clearAll={clearAll}
+                  setFormData={setFormData}
+                  editMode={editMode}
+                  setEditMode={setEditMode}
+                  editEventId={editEventId}
+                  setEditEventId={setEditEventId}
                 />
               }
             />
@@ -106,17 +99,15 @@ function EventManager() {
               path="managevent"
               element={
                 <ManageEventPage
-                  message={message}
-                  loading={loading}
                   events={events}
-                  onEdit={(event) =>
-                    handleEdit(event, setFormData, setEditMode, setEditEventId, navigate)
-                  }
-                  onDelete={(eventId) =>
-                    handleDelete(eventId, setMessage, () =>
-                      fetchEventsWrapper(setEvents, setLoading, setMessage)
-                    )
-                  }
+                  setEvents={setEvents}
+                  message={message}
+                  setMessage={setMessage}
+                  loading={loading}
+                  setLoading={setLoading}
+                  setFormData={setFormData}
+                  setEditMode={setEditMode}
+                  setEditEventId={setEditEventId}
                 />
               }
             />
@@ -126,12 +117,7 @@ function EventManager() {
               element={
                 <CalendarPage
                   events={events}
-                  onEventClick={(clickInfo) => {
-                    const clicked = events.find(
-                      (evt) => evt.eventId.toString() === clickInfo.event.id
-                    );
-                    setSelectedEvent(clicked);
-                  }}
+                  setSelectedEvent={setSelectedEvent}
                 />
               }
             />
@@ -140,14 +126,11 @@ function EventManager() {
               path="profile"
               element={
                 <ProfilePage
+                  user={user}
                   message={message}
+                  setMessage={setMessage}
                   editData={editData}
-                  handleEditChange={(e) => handleEditChange(e, setEditData)}
-                  handleProfileUpdate={(e) =>
-                    handleProfileUpdate({ e, user, editData, setMessage })
-                  }
-                  username={user.username}
-                  handleLogout={handleLogout}
+                  setEditData={setEditData}
                 />
               }
             />

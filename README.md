@@ -78,13 +78,12 @@ cd SchoolEventCalendar
 ```
 
 ### 2. Configure the backend for access to database
-Create a file application-secrets.properties in backend/src/main/resources folder
-Paste this inside the file and replace [your password] with your database password
+Create a file ```application-secrets.properties``` in backend/src/main/resources folder.
+Paste this inside the file and replace ```[your password]``` with your database password
 ```bash
 # Database Password
 DB_PASSWORD=[your password]
 ```
-
 
 ### 3. Run backend
 ```bash
