@@ -1,44 +1,180 @@
-const StudentEventTable = ({ events, type, onAction }) => (
-  <table className="dataTable">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Date</th>
-        <th>Location</th>
-        {type === 'joined' ? <th>Actions</th> : <th>Status</th>}
-        {type !== 'joined' && <th>Actions</th>}
-      </tr>
-    </thead>
-    <tbody>
-      {events.map(event => (
-        <tr key={event.eventId}>
-          <td>{event.eventId}</td>
-          <td>{event.eventName}</td>
-          <td>{event.eventSchedule}</td>
-          <td>{event.eventLocation}</td>
-          {type === 'joined' ? (
-            <>
-              <td>
-                <button className="leaveButton" onClick={() => onAction(event.eventId)}>
-                  Leave
-                </button>
-              </td>
-            </>
-          ) : (
-            <>
-              <td>{event.eventIsActive ? 'Active' : 'Inactive'}</td>
-              <td>
-                <button className="joinButton" onClick={() => onAction(event.eventId)}>
-                  Join
-                </button>
-              </td>
-            </>
+import React from 'react';
+import './StudentEventTable.css';
+
+const StudentEventTable = ({ events, type, onAction, loading = false }) => {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="table-loading">
+        <div className="loading-spinner"></div>
+        <p>Loading events...</p>
+      </div>
+    );
+  }
+
+  if (!events || events.length === 0) {
+    return (
+      <div className="table-empty">
+        <div className="empty-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" strokeWidth="1.5">
+            <path d="M3 3l18 18M9 5h9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
+            <path d="M14 9h-4v6h4V9z" />
+          </svg>
+        </div>
+        <h3>No Events Available</h3>
+        <p>There are currently no events to display.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="student-event-table-container">
+      <div className="table-header">
+        <div className="header-left">
+          <h3 className="table-title">
+            {type === 'joined' ? 'Joined Events' : 'Available Events'}
+            <span className="event-count"> ({events.length})</span>
+          </h3>
+          <p className="table-subtitle">
+            {type === 'joined' ? 'Events you have registered for' : 'Discover and join upcoming events'}
+          </p>
+        </div>
+        <div className="table-summary">
+          <div className="summary-item">
+            <span className="summary-label">Total Events</span>
+            <span className="summary-value">{events.length}</span>
+          </div>
+          {type === 'joined' && (
+            <div className="summary-item">
+              <span className="summary-label">Active</span>
+              <span className="summary-value active-count">
+                {events.filter(e => e.eventIsActive).length}
+              </span>
+            </div>
           )}
-        </tr>
-      ))}
-    </tbody>
-  </table>
-);
+        </div>
+      </div>
+
+      <div className="table-responsive">
+        <table className="student-event-table">
+          <thead>
+            <tr>
+              <th className="event-id">ID</th>
+              <th className="event-title">Event Details</th>
+              <th className="event-date">Date & Time</th>
+              <th className="event-location">Location</th>
+              <th className="event-status">Status</th>
+              <th className="event-actions">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {events.map((event, index) => (
+              <tr key={event.eventId} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                <td className="event-id">
+                  <span className="event-id-badge">#{event.eventId}</span>
+                </td>
+                <td className="event-title">
+                  <div className="event-title-content">
+                    <h4 className="event-name">{event.eventName}</h4>
+                    {event.eventDescription && (
+                      <p className="event-description">{event.eventDescription}</p>
+                    )}
+                  </div>
+                </td>
+                <td className="event-date">
+                  <div className="date-content">
+                    <div className="date-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" strokeWidth="2">
+                        <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+                        <path d="M3 10h18" />
+                      </svg>
+                    </div>
+                    <span className="date-text">{formatDate(event.eventSchedule)}</span>
+                  </div>
+                </td>
+                <td className="event-location">
+                  <div className="location-content">
+                    <div className="location-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" strokeWidth="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                    </div>
+                    <span className="location-text">{event.eventLocation || 'To be announced'}</span>
+                  </div>
+                </td>
+                <td className="event-status">
+                  <span className={`status-badge ${event.eventIsActive ? 'active' : 'inactive'}`}>
+                    <span className="status-dot"></span>
+                    {event.eventIsActive ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td className="event-actions">
+                  {type === 'joined' ? (
+                    <button
+                      className="action-button leave-button"
+                      onClick={() => onAction(event.eventId)}
+                      disabled={!event.eventIsActive}
+                    >
+                      <span className="button-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                          <polyline points="16 17 21 12 16 7" />
+                          <line x1="21" y1="12" x2="9" y2="12" />
+                        </svg>
+                      </span>
+                      <span className="button-text">Leave</span>
+                    </button>
+                  ) : (
+                    <button
+                      className="action-button join-button"
+                      onClick={() => onAction(event.eventId)}
+                      disabled={!event.eventIsActive}
+                    >
+                      <span className="button-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M12 5v14M5 12h14" />
+                        </svg>
+                      </span>
+                      <span className="button-text">
+                        {event.eventIsActive ? 'Join Event' : 'Closed'}
+                      </span>
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="table-footer">
+        <div className="footer-info">
+          Showing <strong>{events.length}</strong> event{events.length !== 1 ? 's' : ''}
+        </div>
+        <div className="footer-legend">
+          <div className="legend-item">
+            <span className="legend-dot active"></span>
+            <span>Active Event</span>
+          </div>
+          <div className="legend-item">
+            <span className="legend-dot inactive"></span>
+            <span>Inactive Event</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default StudentEventTable;
