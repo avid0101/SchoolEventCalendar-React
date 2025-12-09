@@ -1,12 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./StudentDashboard.css";
-
 import useStudentUser from "../../hooks/useStudentUser";
 import useStudentState from "../../hooks/useStudentState";
 import useStudentEffects from "../../hooks/useStudentEffects";
-
 import StudentHeader from "../../components/layout/StudentHeader";
-
 import BrowseEventsPage from "./BrowseEventsPage";
 import JoinedEventsPage from "./JoinedEventsPage";
 import CalendarPage from "./CalendarPage";

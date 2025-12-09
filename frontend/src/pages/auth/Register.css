@@ -60,9 +60,9 @@
   margin-top: 6px;
 }
 
-.registerHeader h2{
+.registerContainer .registerHeader h2{
   margin: 0 0 8px 0;
-  color: #0f172a;
+  color: #000000;
   font-size: 26px;
   text-align: center;
   font-weight: 700;

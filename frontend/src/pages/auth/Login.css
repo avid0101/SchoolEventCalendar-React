@@ -109,15 +109,15 @@
   transform: translateX(-3px);
 }
 
-.loginHeader {
+.loginHeader{
   text-align: center;
   margin-bottom: 22px;
   margin-top: 18px; /* accommodate back button */
 }
 
-.loginHeader h2 {
+.loginContainer .loginHeader h2 {
   margin: 0 0 8px 0;
-  color: #0f172a;
+  color: #000000;
   font-size: 26px;
   text-align: center;
   font-weight: 700;
