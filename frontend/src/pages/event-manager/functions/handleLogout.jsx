@@ -1,4 +1,4 @@
-export function handleLogout() {
+export const handleLogout = () => {
   localStorage.clear();
   window.location.href = '/landing';
-}
+};
