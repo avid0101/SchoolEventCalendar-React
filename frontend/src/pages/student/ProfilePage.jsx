@@ -21,14 +21,14 @@ const ProfilePage = ({
       middlename={middlename}
       lastname={lastname}
     />
-    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
       <button
         onClick={onSubmit}
-        className="studentdashboardUpdateProfileButton"
+        className="submit-button"
       >
         Update
       </button>
-      <button onClick={onLogout} className="studentdashboardLogoutButton">
+      <button onClick={onLogout} className="logout-button">
         Logout
       </button>
     </div>
