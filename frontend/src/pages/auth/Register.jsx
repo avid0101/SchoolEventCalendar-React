@@ -49,7 +49,9 @@ export default function Register({ isModal = false, onClose }) {
         </div>
       ) : (
         <div className="registerContainer">
-          {!isModal && <BackButton onClick={onClose ? onClose : navigateToHome} />}
+          {isModal && (
+            <button className="auth-card-close" onClick={onClose} aria-label="Close">×</button>
+          )}
 
           <RegisterForm
             username={formData.username}

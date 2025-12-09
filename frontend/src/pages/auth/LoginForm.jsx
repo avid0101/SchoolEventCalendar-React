@@ -57,7 +57,7 @@ export default function LoginForm({
 
       {!hideSignupLink && (
         <div className="signupLink">
-          Don't have an account? <Link to="/register" state={{ background: location }}>Sign Up</Link>
+          Don't have an account? <Link to="/register" state={{ background: location.state?.background || location }}>Sign Up</Link>
         </div>
       )}
     </form>

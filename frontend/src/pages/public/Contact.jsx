@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../../components/layout/Header';
+import './Contact.css';
 
 
 const Contact = () => {
@@ -36,10 +37,10 @@ const Contact = () => {
       <Header />
       <main className="content">
         <div className="container">
-          <h1>Contact Us</h1>
           
           <section className="contact-info">
             <div className="contact-details">
+              <h1 className="page-title">Contact Us</h1>
               <h2>Get in Touch</h2>
               <p>
                 Have questions about our School Event Planner? We'd love to hear from you! 
@@ -49,25 +50,25 @@ const Contact = () => {
               <div className="contact-methods">
                 <div className="contact-item">
                   <h3>Email</h3>
-                  <p>support@schooleventplanner.com</p>
+                  <p>justinandrydiva@gmail.com</p>
                 </div>
                 
                 <div className="contact-item">
                   <h3>Phone</h3>
-                  <p>+1 (555) 123-4567</p>
+                  <p>(+63) 912-345-6789</p>
                 </div>
                 
                 <div className="contact-item">
                   <h3>Office Hours</h3>
-                  <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                  <p>Monday - Friday: 9:00 AM - 6:00 PM PHT</p>
                 </div>
                 
                 <div className="contact-item">
                   <h3>Address</h3>
                   <p>
-                    123 Education Street<br />
-                    Learning City, LC 12345<br />
-                    United States
+                    N. Bacalso Avenue<br />
+                    Cebu City<br />
+                    Philippines 6000
                   </p>
                 </div>
               </div>

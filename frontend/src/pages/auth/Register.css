@@ -10,6 +10,24 @@
   box-shadow: 0 8px 24px rgba(16,24,40,0.06);
 }
 
+/* Close control inside the auth card (used when the auth page is rendered in a modal) */
+.registerContainer .auth-card-close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: transparent;
+  border: none;
+  color: #374151;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background-color .12s ease, transform .12s ease;
+}
+
+.registerContainer .auth-card-close:hover { background: rgba(0,0,0,0.04); transform: translateY(-1px); }
+
 /* Back Link Styles */
 .backLink{
   position: absolute;
@@ -70,6 +88,11 @@
 .registerContainer .registerButton{width:100%;padding:12px 18px;background:linear-gradient(90deg,#36C2FF 0%, #8C56FF 100%);color:#fff;border:none;border-radius:6px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 8px 18px rgba(60,80,160,0.12)}
 
 .registerContainer .registerButton:hover{transform:translateY(-1px);filter:brightness(0.98)}
+
+.registerContainer .registerButton:focus {
+  outline: 2px solid #36C2FF;
+  outline-offset: 2px;
+}
 
 .loginLink{text-align:center;margin-top:8px;color:#6b7280;font-size:13px}
 
