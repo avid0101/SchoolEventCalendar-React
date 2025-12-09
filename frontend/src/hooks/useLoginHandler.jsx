@@ -24,6 +24,9 @@ export const useLoginHandler = () => {
         case 'E':
           navigate('/event-manager');
           break;
+        case 'A':
+          navigate('/admin');
+          break;
         default:
           setError('Invalid account type');
           localStorage.removeItem('user');

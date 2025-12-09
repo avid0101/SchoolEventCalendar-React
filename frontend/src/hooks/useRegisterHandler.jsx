@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createStudent,getUsers } from '../services/api';
 
 
-export const useRegisterHandler = () => {
+export const useRegisterHandler = (onClose) => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -37,10 +37,14 @@ export const useRegisterHandler = () => {
       if (response) {
         setMessage('Registration successful!');
         
-        // Redirect to login page after 1 second
+        // Close modal or redirect after 1 second
         setTimeout(() => {
-          window.location.href = '/login';
-        }, 2000);
+          if (onClose) {
+            onClose();
+          } else {
+            window.location.href = '/login';
+          }
+        }, 1000);
 
         return { success: true, data: response };
       }
