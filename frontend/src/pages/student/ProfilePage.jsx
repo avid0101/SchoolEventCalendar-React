@@ -12,7 +12,7 @@ const ProfilePage = ({
   onLogout,
 }) => (
   <div>
-    <h2>Profile Dashboard</h2>
+    
     <MessageAlert message={message} />
     <ProfileForm
       editData={editData}
