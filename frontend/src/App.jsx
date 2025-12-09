@@ -28,8 +28,16 @@ function App() {
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={
+          <AuthModal onClose={() => navigate('/landing')} backdropColor="white">
+            <Login isModal={true} onClose={() => navigate('/landing')} />
+          </AuthModal>
+        } />
+        <Route path="/register" element={
+          <AuthModal onClose={() => navigate('/landing')} backdropColor="white">
+            <Register isModal={true} onClose={() => navigate('/landing')} />
+          </AuthModal>
+        } />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
         <Route path="/event-manager/*" element={<EventManager />} />
