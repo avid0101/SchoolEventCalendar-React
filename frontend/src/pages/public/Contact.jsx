@@ -37,10 +37,10 @@ const Contact = () => {
       <Header />
       <main className="content">
         <div className="container">
-          <h1>Contact Us</h1>
           
           <section className="contact-info">
             <div className="contact-details">
+              <h1 className="page-title">Contact Us</h1>
               <h2>Get in Touch</h2>
               <p>
                 Have questions about our School Event Planner? We'd love to hear from you! 
