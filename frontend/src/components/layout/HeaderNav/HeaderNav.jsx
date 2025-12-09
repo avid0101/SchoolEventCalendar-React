@@ -1,9 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './HeaderNav.module.css';
-import { useHeaderNav } from './useHeaderNav';
 
 function HeaderNav({ username }) {
-  const { handleGoCreate, handleGoManage, handleGoCalendar, handleGoProfile } = useHeaderNav();
+  const navigate = useNavigate();
+
+  const handleGoCreate = () => navigate('/event-manager/createvent');
+  const handleGoManage = () => navigate('/event-manager/managevent');
+  const handleGoCalendar = () => navigate('/event-manager/calendarview');
+  const handleGoProfile = () => navigate('/event-manager/profile');
 
   return (
     <header className={styles.header}>
