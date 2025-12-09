@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './HeaderNav.module.css';
 import { useHeaderNav } from './useHeaderNav';
 
-function HeaderNav() {
+function HeaderNav({ username }) {
   const { handleGoCreate, handleGoManage, handleGoCalendar, handleGoProfile } = useHeaderNav();
 
   return (
@@ -15,7 +15,7 @@ function HeaderNav() {
           <li onClick={handleGoCreate} role="button" tabIndex={0}>Create Event</li>
           <li onClick={handleGoManage} role="button" tabIndex={0}>Manage Events</li>
           <li onClick={handleGoCalendar} role="button" tabIndex={0}>Calendar View</li>
-          <li onClick={handleGoProfile} role="button" tabIndex={0}>User</li>
+          <li onClick={handleGoProfile} role="button" tabIndex={0}>{username || 'User'}</li>
         </ul>
       </div>
     </header>
