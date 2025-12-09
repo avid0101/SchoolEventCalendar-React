@@ -40,7 +40,9 @@ export default function Login({ isModal = false, onClose }) {
 
   return (
     <div className="loginContainer">
-      {!isModal && <BackButton onClick={onClose ? onClose : navigateToHome} />}
+      {isModal && (
+        <button className="auth-card-close" onClick={onClose} aria-label="Close">×</button>
+      )}
 
       <LoginForm
         username={username}

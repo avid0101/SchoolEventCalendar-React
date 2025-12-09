@@ -111,7 +111,7 @@ export default function RegisterForm({
 
       {showLoginLink && (
         <div className="loginLink">
-          Already have an account? <Link to="/login" state={{ background: location }}>Login here</Link>
+          Already have an account? <Link to="/login" state={{ background: location.state?.background || location }}>Login here</Link>
         </div>
       )}
     </form>

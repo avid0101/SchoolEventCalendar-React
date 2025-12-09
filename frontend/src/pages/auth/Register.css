@@ -10,6 +10,24 @@
   box-shadow: 0 8px 24px rgba(16,24,40,0.06);
 }
 
+/* Close control inside the auth card (used when the auth page is rendered in a modal) */
+.registerContainer .auth-card-close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: transparent;
+  border: none;
+  color: #374151;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background-color .12s ease, transform .12s ease;
+}
+
+.registerContainer .auth-card-close:hover { background: rgba(0,0,0,0.04); transform: translateY(-1px); }
+
 /* Back Link Styles */
 .backLink{
   position: absolute;
