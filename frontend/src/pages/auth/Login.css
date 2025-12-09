@@ -157,10 +157,9 @@
   background: transparent;
 }
 
-.formInput:focus { box-shadow: none; border-bottom-color: var(--accent); outline: none; }
-
 .formInput:focus {
-  outline: none;
+  outline: 2px solid #36C2FF;
+  outline-offset: 2px;
   border-color: var(--accent);
   box-shadow: 0 6px 18px rgba(108,99,255,0.08);
   transform: translateY(-1px);
@@ -180,6 +179,11 @@
 }
 
 .loginContainer .loginButton:hover { transform: translateY(-1px); filter: brightness(0.98); }
+
+.loginContainer .loginButton:focus {
+  outline: 2px solid #36C2FF;
+  outline-offset: 2px;
+}
 
 .signupLink {
   text-align: center;

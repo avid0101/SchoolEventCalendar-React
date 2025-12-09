@@ -89,6 +89,11 @@
 
 .registerContainer .registerButton:hover{transform:translateY(-1px);filter:brightness(0.98)}
 
+.registerContainer .registerButton:focus {
+  outline: 2px solid #36C2FF;
+  outline-offset: 2px;
+}
+
 .loginLink{text-align:center;margin-top:8px;color:#6b7280;font-size:13px}
 
 .loginLink a{color:var(--accent,#6c63ff);text-decoration:none;font-weight:600}
