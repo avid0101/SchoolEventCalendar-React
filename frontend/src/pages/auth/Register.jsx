@@ -9,7 +9,7 @@ import { useNavigation } from '../../hooks/useNavigation';
 
 export default function Register({ isModal = false, onClose }) {
   const { formData, updateField, resetForm } = useFormState();
-  const { handleRegister, message, loading } = useRegisterHandler();
+  const { handleRegister, message, loading } = useRegisterHandler(isModal ? onClose : null);
   const { navigateToHome } = useNavigation();
 
   const handleSubmit = async (e) => {
