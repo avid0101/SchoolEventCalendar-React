@@ -6,7 +6,7 @@ import useEventManagerState from '../../hooks/useEventManagerState';
 import { fetchEventsWrapper } from '../../utils/fetchEventsWrapper';
 
 import EventModal from './components/EventModal';
-import HeaderNav from '../../components/layout/HeaderNav';
+import HeaderNav from '../../components/layout/HeaderNav/HeaderNav';
 
 import CreateEventPage from './CreateEventPage';
 import ManageEventPage from './ManageEventPage';
