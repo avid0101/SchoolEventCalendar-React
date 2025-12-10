@@ -1,3 +1,4 @@
+/* Header Component - Similar to Landing Page Header */
 .header {
   padding: 0;
   color: #6c63ff;
@@ -5,9 +6,20 @@
   min-height: 80px;
   display: flex;
   background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
+@media (max-width: 767px) {
+  .header {
+    min-height: auto;
+    display: initial;
+  }
+}
+
+/* Header Container */  
 .container {
   width: 100%;
   max-width: 1300px;
@@ -16,33 +28,130 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  background-color: #ffffff;
 }
 
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Logo Styles */
 .logo {
   color: #5d5d5d;
   font-style: italic;
   text-transform: uppercase;
   font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
   text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-weight: 400;
 }
 
+.logo b {
+  font-weight: 700;
+}
+
+.logo:hover {
+  color: #6c63ff;
+}
+
+@media (max-width: 767px) {
+  .logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Navigation Links */
 .links {
   display: flex;
   align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 0;
+}
+
+@media (max-width: 767px) {
+  .links {
+    text-align: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 }
 
 .links li {
   margin-left: 30px;
   color: #666666;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-.links li:hover {
+@media (max-width: 767px) {
+  .links li {
+    margin-left: 0;
+    margin: 5px;
+  }
+}
+
+/* Navigation Link Styling */
+.navLink {
+  color: #666666;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+/* Last Link (Profile/Username) - Sign-up Button Style */
+.links li:last-child {
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #6c63ff;
+  margin-left: 30px;
+  transition: all 0.3s ease;
+  color: #ffffff;
+}
+
+.links li:last-child .navLink {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Hover Effects */
+.links li:not(:last-child):hover .navLink {
   color: #6c63ff;
+}
+
+.links li:last-child:hover {
+  background-color: #5a52cc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+/* Focus States for Accessibility */
+.logo:focus,
+.links li:focus,
+.navLink:focus {
+  outline: 2px solid #6c63ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Active/Current Page Indicator */
+.links li.active .navLink {
+  color: #6c63ff;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .links li:last-child {
+    margin-left: 0;
+  }
 }
