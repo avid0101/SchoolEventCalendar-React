@@ -233,16 +233,16 @@
 }
 
 .deleteButton {
-  background: white;
-  color: #64748b;
-  border: 1.5px solid #e2e8f0;
-  box-shadow: none;
+  background: #ef4444;
+  color: white;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
 }
 
 .deleteButton:hover {
-  background: #fef2f2;
-  border-color: #fecaca;
-  color: #dc2626;
+  background: #dc2626;
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);
 }
 
 .viewButton:active,
