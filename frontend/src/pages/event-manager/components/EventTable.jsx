@@ -1,3 +1,5 @@
+import './EventTable.css';
+
 const EventTable = ({ events, onEdit, onDelete, onViewParticipants }) => {
   if (!events || events.length === 0) {
     return (

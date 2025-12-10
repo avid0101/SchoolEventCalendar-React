@@ -3,6 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import './CalendarView.css';
 
 const CalendarView = ({ events, onEventClick }) => {
   const calendarEvents = events.map(evt => ({
@@ -13,18 +14,20 @@ const CalendarView = ({ events, onEventClick }) => {
   }));
 
   return (
-    <FullCalendar
-      plugins={[bootstrap5Plugin, dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      initialView="dayGridMonth"
-      events={calendarEvents}
-      height="auto"
-      headerToolbar={{
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      }}
-      eventClick={onEventClick}
-    />
+    <div className="calendar-wrapper">
+      <FullCalendar
+        plugins={[bootstrap5Plugin, dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        initialView="dayGridMonth"
+        events={calendarEvents}
+        height="auto"
+        headerToolbar={{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        }}
+        eventClick={onEventClick}
+      />
+    </div>
   );
 };
 
