@@ -1,3 +1,5 @@
+import './EventModal.css';
+
 const EventModal = ({ event, onClose, onEdit }) => {
   if (!event) return null;
 

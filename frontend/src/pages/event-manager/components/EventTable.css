@@ -1,0 +1,276 @@
+/* Table Styles */
+.table-wrapper {
+  margin: 0;
+  padding: 40px;
+}
+
+.table-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 16px;
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+}
+
+.table-header-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.table-header-info p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.event-count-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #6366f110 0%, #8b5cf610 100%);
+  border: 1px solid #6366f130;
+  border-radius: 12px;
+  color: #6366f1;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 18px 20px;
+  text-align: left;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dataTable th {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  font-weight: 600;
+  color: #475569;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.th-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.th-content svg {
+  color: #6366f1;
+}
+
+.dataTable td {
+  color: #1e293b;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.dataTable tbody tr {
+  transition: all 0.2s ease;
+}
+
+.dataTable tbody tr:hover {
+  background: linear-gradient(135deg, #fafbff 0%, #f0f4ff 100%);
+}
+
+.dataTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table Cell Styles */
+.id-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6366f1;
+}
+
+.event-title-cell {
+  max-width: 250px;
+}
+
+.event-name {
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date-cell {
+  white-space: nowrap;
+  color: #475569;
+}
+
+.time-range {
+  whitespace: nowrap;
+  font-family: 'Monaco', 'Courier New', monospace;
+  color: #475569;
+  font-size: 13px;
+}
+
+.location-cell {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-active {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.status-active .status-dot {
+  background: #10b981;
+}
+
+.status-inactive {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.status-inactive .status-dot {
+  background: #ef4444;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.viewButton,
+.editButton,
+.deleteButton {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.viewButton {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.viewButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.editButton {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+.editButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.deleteButton {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+}
+
+.deleteButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 80px 40px;
+  color: #64748b;
+}
+
+.empty-state svg {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 24px;
+  opacity: 0.3;
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  font-size: 15px;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    padding: 24px;
+  }
+
+  .table-header-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .event-count-badge {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,3 +1,5 @@
+import './EventForm.css';
+
 const EventForm = ({ formData, onChange, onSubmit, onClear, editMode }) => {
   return (
     <form onSubmit={onSubmit} className="formContainer">

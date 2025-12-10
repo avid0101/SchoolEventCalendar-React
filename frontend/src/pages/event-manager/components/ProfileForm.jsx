@@ -1,3 +1,5 @@
+import './ProfileForm.css';
+
 const ProfileForm = ({ editData, onChange, onSubmit }) => {
   return (
     <>
