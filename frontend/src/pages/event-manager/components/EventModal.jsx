@@ -1,10 +1,12 @@
+import './EventModal.css';
+
 const EventModal = ({ event, onClose, onEdit }) => {
   if (!event) return null;
 
   return (
     <div className="modalOverlay">
       <div className="modalContent">
-        <button className="closeButton" onClick={onClose}>×</button>
+        <button className="closeButton" onClick={onClose}></button>
         <h3>{event.eventName}</h3>
         <p><strong>Start:</strong> {event.eventSchedule} {event.startTime}</p>
         <p><strong>End:</strong> {event.eventSchedule} {event.endTime}</p>

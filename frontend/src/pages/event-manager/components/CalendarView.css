@@ -1,0 +1,45 @@
+/* FullCalendar Customization */
+.calendar-wrapper {
+  padding: 0 40px 40px;
+}
+
+.fc .fc-toolbar {
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+}
+
+.fc .fc-button {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.fc .fc-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.fc .fc-button:active {
+  transform: translateY(0);
+}
+
+.fc .fc-event {
+  border-radius: 8px;
+  border: none;
+  padding: 4px 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .calendar-wrapper {
+    padding: 0 24px 24px;
+  }
+}
