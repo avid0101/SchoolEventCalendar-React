@@ -26,22 +26,35 @@ const EventModal = ({ event, onClose, onEdit }) => {
     return `${displayHour}:${min} ${period}`;
   };
 
-  // Check if event has ended
+  // Check event status based on time
   const getEventStatus = () => {
-    if (!event.eventSchedule || !event.endTime) {
+    if (!event.eventSchedule || !event.startTime || !event.endTime) {
       return event.eventIsActive ? 'Active' : 'Inactive';
     }
 
-    const eventDate = new Date(event.eventSchedule);
-    const [hours, minutes] = event.endTime.split(':');
-    eventDate.setHours(parseInt(hours), parseInt(minutes), 0, 0);
-    
     const now = new Date();
     
-    if (now > eventDate) {
+    // Create start time
+    const startDate = new Date(event.eventSchedule);
+    const [startHours, startMinutes] = event.startTime.split(':');
+    startDate.setHours(parseInt(startHours), parseInt(startMinutes), 0, 0);
+    
+    // Create end time
+    const endDate = new Date(event.eventSchedule);
+    const [endHours, endMinutes] = event.endTime.split(':');
+    endDate.setHours(parseInt(endHours), parseInt(endMinutes), 0, 0);
+    
+    // Check if event has ended
+    if (now > endDate) {
       return 'Ended';
     }
     
+    // Check if event hasn't started yet
+    if (now < startDate) {
+      return 'Inactive';
+    }
+    
+    // Event is currently happening
     return event.eventIsActive ? 'Active' : 'Inactive';
   };
 

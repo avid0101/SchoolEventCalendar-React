@@ -84,14 +84,24 @@ const ProfilePage = ({
         onSubmit={handleProfileUpdate}
         username={user.username}
       />
-      <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+      <div className="profile-actions">
         <button
           onClick={handleProfileUpdate}
           className="eventmanagerUpdateProfileButton"
         >
-          Update
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+            <polyline points="17 21 17 13 7 13 7 21" />
+            <polyline points="7 3 7 8 15 8" />
+          </svg>
+          Update Profile
         </button>
         <button onClick={handleLogout} className="eventmanagerLogoutButton">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
           Logout
         </button>
       </div>
