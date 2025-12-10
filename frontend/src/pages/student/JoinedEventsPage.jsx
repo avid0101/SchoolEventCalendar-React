@@ -3,7 +3,6 @@ import MessageAlert from '../../components/common/MessageAlert';
 
 const JoinedEventsPage = ({ events, message, loading, onLeave }) => (
   <div>
-    <h2>Joined Events</h2>
     <MessageAlert message={message} />
     {loading ? (
       <p>Loading...</p>
