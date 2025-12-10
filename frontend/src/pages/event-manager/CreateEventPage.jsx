@@ -72,7 +72,7 @@ const CreateEventPage = ({
 
   return (
     <>
-      <h2>{editMode ? 'Edit Event' : 'Create New Event'}</h2>
+      <h2>{editMode ? '' : ''}</h2>
       <MessageAlert message={message} />
       <EventForm
         formData={formData}
