@@ -158,46 +158,74 @@
   }
 }
 
+/* Profile Actions Container */
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  padding: 24px 40px 40px 40px;
+  background: white;
+  border-radius: 0 0 24px 24px;
+}
+
 /* Profile Buttons */
 .eventmanagerUpdateProfileButton,
 .eventmanagerLogoutButton {
-  padding: 14px 32px;
+  flex: 1;
+  padding: 12px 24px;
   font-size: 15px;
   font-weight: 600;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin: 0 40px 16px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
 }
 
 .eventmanagerUpdateProfileButton {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: #3b82f6;
   color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .eventmanagerUpdateProfileButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+  background: #2563eb;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.eventmanagerUpdateProfileButton:active {
+  transform: translateY(0);
 }
 
 .eventmanagerLogoutButton {
   background: white;
   color: #dc2626;
-  border: 2px solid #dc2626;
-  margin-bottom: 40px;
+  border: 1.5px solid #dc2626;
+  box-shadow: none;
 }
 
 .eventmanagerLogoutButton:hover {
-  background: #dc2626;
-  color: white;
-  transform: translateY(-2px);
+  background: #fef2f2;
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.eventmanagerLogoutButton:active {
+  background: #fee2e2;
 }
 
 @media (max-width: 768px) {
+  .profile-actions {
+    flex-direction: column;
+    padding: 20px 24px 32px 24px;
+  }
+
   .eventmanagerUpdateProfileButton,
   .eventmanagerLogoutButton {
-    margin: 0 24px 16px;
+    width: 100%;
   }
 }
